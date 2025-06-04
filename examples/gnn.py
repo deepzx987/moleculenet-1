@@ -2,7 +2,7 @@ import deepchem as dc
 import json
 import numpy as np
 import torch.nn.functional as F
-
+import torch
 from copy import deepcopy
 from hyperopt import hp, fmin, tpe
 from shutil import copyfile
@@ -39,7 +39,8 @@ def load_model(save_pth, args, tasks, hyperparams):
         number_atom_features=number_atom_features,
         n_classes=n_classes,
         learning_rate=hyperparams['lr'],
-        model_dir=save_pth)
+        model_dir=save_pth,
+        device=torch.device("cpu"))
   else:
     raise ValueError('Unexpected model: {}'.format(args['model']))
 

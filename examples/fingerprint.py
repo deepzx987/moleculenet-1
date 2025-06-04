@@ -10,6 +10,16 @@ from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 
 from utils import init_trial_path, load_dataset
 
+import warnings
+warnings.filterwarnings("ignore")
+
+# Suppress TensorFlow deprecation warnings specifically
+import tensorflow as tf
+tf.get_logger().setLevel('ERROR')
+
+from rdkit import RDLogger
+RDLogger.DisableLog('rdApp.*')
+
 
 def rf_model_builder(model_dir, hyperparams, mode):
   if mode == 'classification':
@@ -21,7 +31,7 @@ def rf_model_builder(model_dir, hyperparams, mode):
   if mode == 'regression':
     sklearn_model = RandomForestRegressor(
         n_estimators=hyperparams['n_estimators'],
-        criterion=hyperparams['criterion'],
+        # criterion=hyperparams['criterion'],
         min_samples_split=hyperparams['min_samples_split'],
         bootstrap=hyperparams['bootstrap'])
   return dc.models.SklearnModel(sklearn_model, model_dir)

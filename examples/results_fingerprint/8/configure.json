@@ -1,0 +1,6 @@
+{
+  "bootstrap": false,
+  "criterion": "mae",
+  "min_samples_split": 32,
+  "n_estimators": 30
+}

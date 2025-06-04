@@ -1,0 +1,8 @@
+{
+  "batchnorm": true,
+  "dropout": 0.05978276682658885,
+  "hidden_feats": 256,
+  "lr": 0.2078109474070683,
+  "num_gnn_layers": 3,
+  "residual": false
+}
